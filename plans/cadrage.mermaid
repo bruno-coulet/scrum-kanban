@@ -1,0 +1,15 @@
+flowchart TB
+    Client["Client"] --> Agent["Agent commercial"]
+    Agent -- question DC<br>par mail --> Bot["Interception RAG"]
+    Bot -- réponse ancrée<br>+ citations --> Adviser["DC Adviser"]
+    Adviser -- Valide la reponse<br>par mail --> Agent
+    Agent -- répond --> Client
+
+    style Client fill:#8A38F5,stroke-width:0px,stroke-dasharray:0,color:#ffffff
+    style Agent fill:#AA00FF,stroke-width:0px,stroke-dasharray:0,color:#ffffff
+    style Adviser stroke:none,fill:#AA00FF,color:#ffffff
+    linkStyle 0 stroke:#5D5534,fill:none
+    linkStyle 1 stroke:#5D5534,fill:none
+    linkStyle 2 stroke:#5D5534
+    linkStyle 3 stroke:#5D5534,fill:none
+    linkStyle 4 stroke:#5D5534,fill:none

@@ -1,0 +1,35 @@
+flowchart TB
+ subgraph EXT["Agents"]
+        A["Demande DC<br>(mail / formulaire)"]
+  end
+ subgraph APP["Backend applicatif"]
+        K1["K1 Interception"]
+        K2["K2 Pipeline RAG"]
+        K5["K5 Module de citation"]
+        K6["K6 File de relecture"]
+        K7["K7 Transmission"]
+  end
+ subgraph USER["DC adviser"]
+        U["Interface de validation<br>(approuver / ajuster / rejeter)"]
+  end
+ subgraph DATA["Couche données"]
+        SRC["Fichiers sources<br>IMDG, Custom Rules, P&amp;R<br>(versionnés)"]
+        K4["K4 Ingestion / chunking"]
+        K3["K3 Index vectoriel<br>+ métadonnées"]
+        K8["K8 Mise à jour"]
+  end
+    A --> K1
+    K1 --> K2
+    K2 --> K5
+    K5 --> K6
+    K6 <--> U
+    K6 --> K7
+    K7 --> A
+    K8 --> K4
+    K4 --> K3
+    SRC --> K4
+    U --> K6
+    K3 --> K2
+
+    style EXT fill:#AA00FF,stroke:transparent
+    style USER fill:#AA00FF,stroke:transparent

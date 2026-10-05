@@ -1,0 +1,9 @@
+sequenceDiagram
+  participant Ag as Agent commercial
+  participant Sys as Système (K1→K2→K5)
+  participant Adv as DC adviser (K6)
+  Ag->>Sys: Demande DC
+  Sys->>Sys: RAG + citation → réponse sourcée
+  Sys->>Adv: Question + réponse + sources (file de relecture)
+  Adv->>Adv: Approuve / ajuste / rejette
+  Adv->>Ag: Réponse validée (telle quelle ou modifiée)
